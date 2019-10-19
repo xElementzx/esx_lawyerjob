@@ -1,5 +1,10 @@
 # esx_laywerjob
-Simple laywer job
+Simple laywer job with invoicing, on/off duty support, configurable locations and locale support.. oh and a working icon for the phone
+
+Based off
+- [esx_lawyerjob](https://github.com/ESX-PUBLIC/esx_lawyerjob)
+- [esx_mechanicjob](https://github.com/ESX-Org/esx_mechanicjob)
+- [esx_duty](https://github.com/qalle-fivem/esx_duty)
 
 ### Requirements
 - ESX
