@@ -1,0 +1,17 @@
+Locales['en'] = {
+  ['name']                  = 'Lawyer',
+  ['lawyer']                = 'Lawyer',
+  ['open_menu']             = 'Press ~g~E~w~ to open your job menu.',
+  ['onduty']                = 'Go on duty',
+  ['offduty']               = 'Go off duty',
+  ['boss_actions']          = 'Boss Actions',
+  ['no_players_nearby']     = 'Nobody Nearby',
+  ['invoice_amount']        = 'Invoice Amount',
+  ['billing']               = 'Billing',
+  ['amount_invalid']        = 'Invalid Amount',
+  ['alert_lawyer']          = 'Legal Representation',
+  ['now_off_duty']          = 'You are now off duty',
+  ['now_on_duty']           = 'You are now on duty',
+  ['already_off_duty']      = 'You are already off duty',
+  ['already_on_duty']      = 'You are already on duty',
+}

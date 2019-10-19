@@ -1,9 +1,19 @@
 resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
-description 'ESX Laywer Job'
+description 'ESX Lawyer Job'
 
-version '1.1.0'
+version '1.1.1'
 
-client_script 'client.lua'
+client_scripts {
+	'@es_extended/locale.lua',
+	'locales/en.lua',
+	'config.lua',
+	'client/client.lua'
+}
 
-server_script 'server.lua'
+server_scripts {
+	'@es_extended/locale.lua',
+	'locales/en.lua',
+	'config.lua',
+	'server/server.lua'
+}
