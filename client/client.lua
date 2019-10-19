@@ -25,13 +25,14 @@ end)
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
   ESX.PlayerData = xPlayer
+  TriggerServerEvent('esx_lawyerjob:offduty')
 end)
   
 -- Draw Marker/Enter Exit Events
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
-		if(ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "lawyer" or ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "offlawyer") then
+		if(ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "lawyer" or ESX.PlayerData.job.name == "offlawyer") then
 			local isInMarker = false
 			local currentZone = nil
 			local coords = GetEntityCoords(PlayerPedId())
@@ -58,7 +59,7 @@ end)
 -- Draw Blip
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(500)
+		Citizen.Wait(500) -- Put a wait here because otherwise ESX was equal to Nil randomly?
 		if(ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "lawyer" or ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "offlawyer") then
 			for k,v in pairs(Config.Zones) do
 				local blip = AddBlipForCoord(v.Pos.x, v.Pos.y, v.Pos.z)
@@ -84,7 +85,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
-			if IsControlJustReleased(0, 38) and ESX.PlayerData.job and ESX.PlayerData.job.name == 'lawyer' or ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "offlawyer" then
+			if IsControlJustReleased(0, 38) and ESX.PlayerData.job and ESX.PlayerData.job.name == 'lawyer' or IsControlJustReleased(0, 38) and ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "offlawyer" then
 				if CurrentAction == 'lawyer_actions_menu' then
 					OpenJobMenu()
 					CurrentAction = nil
@@ -123,7 +124,7 @@ function OpenJobMenu()
 		{label = _U('offduty'),       value = 'cloakroom2'}
 	}
 
-	if ESX.PlayerData.job.grade_name == 'boss' then
+	if ESX.PlayerData.job.grade_name == 'boss' and ESX.PlayerData.job.name == 'lawyer' then
 		table.insert(elements, {label = _U('boss_actions'), value = 'boss_actions'})
 	end
 
@@ -164,6 +165,7 @@ function OpenJobMenu()
 	end)
 end
 
+--open F6 menu
 function OpenActionsMenu()
 	ESX.UI.Menu.CloseAll()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'lawyer_job_actions', {
