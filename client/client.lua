@@ -32,7 +32,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
-		if(ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "lawyer" or ESX.PlayerData.job.name == "offlawyer") then
+		if(ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "lawyer" or ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == "offlawyer") then
 			local isInMarker = false
 			local currentZone = nil
 			local coords = GetEntityCoords(PlayerPedId())
